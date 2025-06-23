@@ -3,7 +3,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
 export interface TodoState {
-    id: number,
+    id: string,
     title: string,
     done: boolean
 }

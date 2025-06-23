@@ -18,7 +18,6 @@ enum Tab {
     NO = 'no'
 }
 
-let idx = 0
 export default function TodoList() {
     const todos = useAppSelector(todoList)
     const dispatch = useAppDispatch()
@@ -28,7 +27,7 @@ export default function TodoList() {
     // 添加待办事项
     function handleAddTodo() {
         if (inputValue) {
-            dispatch(addTodo({ id: todos.length, title: inputValue, done: false }))
+            dispatch(addTodo({ id: `id-${Date.now()}-${Math.floor(Math.random() * 1000)}`, title: inputValue, done: false }))
         }
         setInputValue('')
     }

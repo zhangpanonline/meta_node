@@ -79,8 +79,6 @@ function List() {
             "outline-base-content overflow-hidden rounded-lg outline-2 outline-offset-2" +
             (currentTheme === theme ? " outline" : "")
           }
-          data-set-theme="light"
-          data-act-class="outline"
           onClick={() => dispatch(setTheme(theme))}
           key={theme}
         >

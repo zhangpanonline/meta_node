@@ -1,10 +1,10 @@
 "use client";
 
 import { useSelector, useDispatch, TypedUseSelectorHook } from "react-redux";
-
 import { inc, dec } from "./counterSlice";
-
 import { RootState, AppDispatch } from "@/app/store";
+
+import { getArticleListApi } from '@/app/api/index'
 
 // 传统写法：适用范围广，更推荐
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -26,6 +26,7 @@ export default function Home() {
       <button className="btn btn-secondary" onClick={() => dispatch(inc())}>
         +
       </button>
+      <button className="btn btn-primary" onClick={getArticleListApi} >请求列表</button>
     </div>
   );
 }

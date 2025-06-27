@@ -19,11 +19,11 @@ export default function Home() {
   const dispatch = useAppDispatch();
   return (
     <div>
-      <button className="btn" onClick={() => dispatch(dec())}>
+      <button className="btn btn-primary" onClick={() => dispatch(dec())}>
         -
       </button>
       <span>count：{count}</span>
-      <button className="btn" onClick={() => dispatch(inc())}>
+      <button className="btn btn-secondary" onClick={() => dispatch(inc())}>
         +
       </button>
     </div>

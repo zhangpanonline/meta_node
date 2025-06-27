@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from './storage'
 import counterReducer from '../counterSlice'
+import themeReducer from './themeSlice'
 
 
 const persistedReducer = persistReducer(
@@ -10,8 +11,8 @@ const persistedReducer = persistReducer(
         storage
     },
     combineReducers({
-        counter: counterReducer
-        // 其他reducer
+        counter: counterReducer,
+        theme: themeReducer
     }))
 
 export const store = configureStore({

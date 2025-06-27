@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "./ReduxProvider";
+import NavBar from "./NavBar";
+import ThemeManager from './ThemeManager'
 
 
 const inter = Inter({
@@ -27,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        data-theme="light"
+        
         className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
         <ReduxProvider>
+          <NavBar />
           {children}
+          <ThemeManager />
         </ReduxProvider>
       </body>
     </html>

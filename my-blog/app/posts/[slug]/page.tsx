@@ -3,7 +3,8 @@ import { supabase } from "@/app/api/supabaseClient";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import ReactMarkdown from 'react-markdown'
-import EditButton from "./EditButton";
+import EditButton from "../../components/EditButton";
+import DeleteButton from "../../components/DeleteButton";
 
 interface Props {
     params: {
@@ -27,6 +28,7 @@ export default async function PostPage({ params }: Props) {
             <p className="text-sm text-gray-500">
                 发布于：{format(new Date(data.created_at as string), 'yyyy-MM-dd')}
                 <EditButton slug={data.slug} ></EditButton>
+                <DeleteButton slug={data.slug} ></DeleteButton>
             </p>
             <article className="prose prose-neutral dark:prose-invert max-w-none">
                 <ReactMarkdown>{data.content}</ReactMarkdown>

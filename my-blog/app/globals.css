@@ -3,3 +3,5 @@
 @plugin "daisyui" {
   themes: all;
 }
+
+@import 'react-markdown-editor-lite/lib/index.css'

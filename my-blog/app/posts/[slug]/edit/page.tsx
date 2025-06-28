@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { supabase } from "@/app/api/supabaseClient"
+import dynamic from "next/dynamic"
+import Markdown from "react-markdown"
+
+const MdEditor = dynamic(() => import('react-markdown-editor-lite'), { ssr: false })
 
 export default function EditPostPage() {
     const { slug } = useParams()
@@ -53,7 +57,12 @@ export default function EditPostPage() {
             <h1 className="text-2xl font-bold mb-4">🛠 编辑文章</h1>
             <form onSubmit={handleUpdate} className="space-y-4">
                 <input type="text" value={title} onChange={e => setTitle(e.target.value)} className="input input-primary" required />
-                <textarea value={content} onChange={e => setContent(e.target.value)} className="textarea textarea-primary w-full h-60" required />
+
+                {/* <textarea value={content} onChange={e => setContent(e.target.value)} className="textarea textarea-primary w-full h-60" required /> */}
+                <div className="border border-primary rounded">
+                    <MdEditor className="h-100" value={content} renderHTML={text => <Markdown>{text}</Markdown>} onChange={({ text }) => setContent(text)}></MdEditor>
+                </div>
+
                 <button type="submit" className="btn btn-primary w-full" disabled={loading}>
                     保存修改
                 </button>

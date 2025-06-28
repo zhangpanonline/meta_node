@@ -11,12 +11,16 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "@supabase/supabase-js": "^2.50.2",
+    "@tailwindcss/typography": "^0.5.16",
     "daisyui": "^5.0.43",
+    "date-fns": "^4.1.0",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "swr": "^2.3.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

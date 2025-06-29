@@ -5,6 +5,8 @@ import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux'
 import { RootState, AppDispatch } from './store'
 import { setTheme } from './store/themeSlice'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import UserInfo from './components/UserInfo'
 
 // const useAppSelector = useSelector.withTypes<RootState>()
 // const useAppDispatch = useDispatch.withTypes<AppDispatch>()
@@ -44,9 +46,12 @@ const themeList = [
 ];
 
 export default function NavBar() {
+  const router = useRouter()
   return (
     <div className="navbar bg-base-200 border-b border-base-300" >
-        <div className="navbar-start" ></div>
+        <div className="navbar-start" onClick={router.back}>
+          {"<"} 返回
+        </div>
         <div className="navbar-center" ></div>
         <div className="navbar-end" >
             <Link href="/write" className="btn btn-primary btn-ghost">✍️ 新建文章</Link>
@@ -65,6 +70,7 @@ export default function NavBar() {
                     </div>
                 </div>
             </div>
+            <UserInfo></UserInfo>
         </div>
     </div>
   )

@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation"
 import { supabase } from "@/app/api/supabaseClient"
 import dynamic from "next/dynamic"
 import Markdown from "react-markdown"
+import AuthGuard from "@/app/components/AuthGuard"
 
 const MdEditor = dynamic(() => import('react-markdown-editor-lite'), { ssr: false })
 
@@ -53,6 +54,7 @@ export default function EditPostPage() {
     }
 
     return (
+        <AuthGuard>
         <main className="max-w-2xl mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">🛠 编辑文章</h1>
             <form onSubmit={handleUpdate} className="space-y-4">
@@ -68,5 +70,6 @@ export default function EditPostPage() {
                 </button>
             </form>
         </main>
+        </AuthGuard>
     )
 }

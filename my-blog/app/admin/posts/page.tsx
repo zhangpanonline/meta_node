@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback} from 'react'
 import Link from 'next/link'
 import { supabase } from '@/app/api/supabaseClient'
 import { Database } from '@/app/api/supabaseType'
@@ -22,19 +22,19 @@ export default function AdminPostListPage() {
     const from = (page - 1) * PAGE_SIZE
     const to = from + PAGE_SIZE - 1
 
-    async function fetchPosts() {
+    const fetchPosts = useCallback(async () => {
         setLoading(true)
-        const { data, count, error } = await supabase.from('articles').select('*', { count: 'exact' }).order('created_at', { ascending: false }).range(from, to)
-
+        const { data, count } = await supabase.from('articles').select('*', { count: 'exact' }).order('created_at', { ascending: false }).range(from, to)
+    
         if (data) {
             setPosts(data)
             setCount(count || 0)
         }
         setLoading(false)
-    }
+    }, [from, to])
     useEffect(() => {
         fetchPosts()
-    }, [page])
+    }, [fetchPosts])
 
     const totalPages = Math.ceil(count / PAGE_SIZE)
 

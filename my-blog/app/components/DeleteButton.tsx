@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation"
 import { supabase } from "@/app/api/supabaseClient"
 
-export default function DeleteButton({ slug, onDeleted }: { slug: string, onDeleted?: Function }) {
+export default function DeleteButton({ slug, onDeleted }: { slug: string, onDeleted?: () => void }) {
     const router = useRouter()
 
     const handleDelete = async () => {

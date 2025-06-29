@@ -15,7 +15,8 @@ export default function ArticleList() {
     
     if (isLoading) return <p>加载中...</p>
     if (error) return <p className="text-error" >加载失败：{error.message}</p>
-    if (data && data.error) return <p>{data.error}</p>
+    // @ts-expect-error: 请求不到数据会报错
+    if (data && Object.hasOwn(data, 'error')) return <p>{data.error}</p>
     if (!data || data.length === 0) return <p>暂无文章</p>
     
     return (

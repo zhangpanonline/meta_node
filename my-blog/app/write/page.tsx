@@ -23,7 +23,7 @@ export default function WritePage() {
         e.preventDefault()
         setLoading(true)
 
-        const {data, error} = await supabase.from('articles').insert([
+        const {error} = await supabase.from('articles').insert([
             {
                 title, slug, content, is_published: isPublished, tags: [tags]
             }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../api/supabaseClient";
 import Link from "next/link";
+import { UserResponse } from "@supabase/auth-js";
 
 export default function UserInfo() {
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<UserResponse['data']['user']>(null)
 
     useEffect(() => {
         supabase.auth.getUser().then(({data}) => {

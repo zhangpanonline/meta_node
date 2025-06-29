@@ -7,9 +7,9 @@ import EditButton from "../../components/EditButton";
 import DeleteButton from "../../components/DeleteButton";
 
 interface Props {
-    params: {
+    params: Promise<{
         slug: string
-    }
+    }>
 }
 
 export default async function PostPage({ params }: Props) {

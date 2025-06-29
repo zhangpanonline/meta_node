@@ -19,7 +19,7 @@ export default function EditPostPage() {
 
     useEffect(() => {
         async function fetchData() {
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('articles')
                 .select('*')
                 .eq('slug', slug as string)

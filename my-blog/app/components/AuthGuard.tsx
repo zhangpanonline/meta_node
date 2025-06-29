@@ -3,15 +3,15 @@
 import { useEffect, useState, ReactNode } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "../api/supabaseClient"
+import { UserResponse } from '@supabase/auth-js'
 
-export default function AuthGuard({ children }: { children: React.ReactNode }) {
+export default function AuthGuard({ children }: { children: ReactNode }) {
     const router = useRouter()
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<UserResponse['data']['user']>(null)
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data }) => {
-            console.log(data, loading, 'login')
             if (!data.user) {
                 router.push('/login')
             } else {

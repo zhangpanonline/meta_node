@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://localhost:3000
+Host: https://meta-node-hoo7r9n8n-zhangpanonline-3306s-projects.vercel.app/
 
 # Sitemaps
-Sitemap: https://localhost:3000/sitemap.xml
+Sitemap: https://meta-node-hoo7r9n8n-zhangpanonline-3306s-projects.vercel.app/sitemap.xml
